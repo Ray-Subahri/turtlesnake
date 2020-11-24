@@ -95,7 +95,17 @@ def interpret_entry(x, y):
     elif (x >= 150 and x <= 170 and y >= -150 and y <= -130):
         turn_to_top()
     move_head()
+"""
+# check if head and food collide
+def check_collision_with_food():
+    if head.distance(food) < 20:
+        # TODO put food to new position
+        
+        # TODO add segment to snake body
 
+# create list for segments
+segments = []
+"""
 down.onclick(interpret_entry)
 right.onclick(interpret_entry)
 left.onclick(interpret_entry)
