@@ -1,6 +1,5 @@
 from turtle import *
 
-
 # create snake head
 head = Turtle()
 head.shape("square")
@@ -87,22 +86,19 @@ def move_head():
 
 # define area of and reaction to onclick
 def interpret_entry(x, y):
-    if (x >= 150 and x <= 170 #left and right border of down button
-    and y >= -190 and y <= -170): # bottom and top border of down button
+    if (x >= 150 and x <= 170 and y >= -190 and y <= -170):
         turn_to_bottom()
-    elif (x >= 170 and x <= 190
-    and y >= 170 and y <= -150):
+    elif (x >= 170 and x <= 190 and y >= -170 and y <= -150):
         turn_to_right()
-    elif (x >= 130 and x <= 150
-    and y >= -190 and y <= -170):
+    elif (x >= 130 and x <= 150 and y >= -170 and y <= -150):
         turn_to_left()
-    elif (x >= 150 and x <= 170
-    and y >= -150 and y <= -130):
+    elif (x >= 150 and x <= 170 and y >= -150 and y <= -130):
         turn_to_top()
     move_head()
 
-onclick(interpret_entry)
+down.onclick(interpret_entry)
+right.onclick(interpret_entry)
+left.onclick(interpret_entry)
+up.onclick(interpret_entry)
 
-
-hideturtle()
 done()
