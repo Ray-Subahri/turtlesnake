@@ -1,13 +1,8 @@
 from turtle import *#
 from random import randint
-"""
-#set up the screen
-Screen().title("wELCOME to Ray's snake game !")
-Screen().bgcolor("blue")
-Screen().setup(width=190,height=190)
-Screen().tracer(0)
-"""
+
 setup(width=405, height=405, startx=None, starty=None)
+title("Welcome to Ray's Turtle Snake Game")
 bgcolor("blue")
 
 
