@@ -1,1 +1,1 @@
-The classic game 'Snake' written in python using the turtle library
+The classic game 'Snake' written in python using the turtle library.
