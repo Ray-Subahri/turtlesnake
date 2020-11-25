@@ -1,53 +1,14 @@
-from turtle import *
-
-# create snake head
-head = Turtle()
-head.shape("square")
-head.color("black")
-head.penup()
-head.speed(0)
-head.goto(0, 20)
-head.direction = "stop"
-
-# create food
-food = Turtle()
-food.shape("circle")
-food.color("red")
-food.penup()
-food.speed(0)
-food.goto(200, 100)
-
-# initialize control buttons
-down = Turtle()
-down.shape("triangle")
-down.color("green")
-down.right(90)
-down.speed(0)
-down.penup()
-down.goto(160, -180)
-
-right = Turtle()
-right.shape("triangle")
-right.color("green")
-right.speed(0)
-right.penup()
-right.goto(180, -160)
-
-left = Turtle()
-left.shape("triangle")
-left.color("green")
-left.right(180)
-left.speed(0)
-left.penup()
-left.goto(140, -160)
-
-up = Turtle()
-up.shape("triangle")
-up.color("green")
-up.right(-90)
-up.speed(0)
-up.penup()
-up.goto(160, -140)
+from turtle import *#
+from random import randint
+"""
+#set up the screen
+Screen().title("wELCOME to Ray's snake game !")
+Screen().bgcolor("blue")
+Screen().setup(width=190,height=190)
+Screen().tracer(0)
+"""
+setup(width=405, height=405, startx=None, starty=None)
+bgcolor("blue")
 
 
 # define turn functions
@@ -95,17 +56,116 @@ def interpret_entry(x, y):
     elif (x >= 150 and x <= 170 and y >= -150 and y <= -130):
         turn_to_top()
     move_head()
-"""
+    check_collision_with_food()
+    check_collision_with_border()
+    check_collision_with_segment()
+
+
 # check if head and food collide
 def check_collision_with_food():
     if head.distance(food) < 20:
-        # TODO put food to new position
-        
-        # TODO add segment to snake body
+        # put food to new position
+        place_food()
+        # add segment to snake body
+        new_segment = Turtle()
+        new_segment.shape("square")
+        new_segment.color("yellow")
+        new_segment.penup()
+        new_segment.speed(0)
+        segments.append(new_segment)
 
-# create list for segments
+# placing the food on random position
+def place_food():
+    x = randint(1, 9)*20
+    y = randint(1, 9)*20
+    if x >= 140 and y <= -140:
+        x = randint(1, 9)*20
+        y = randint(1, 9)*20
+    else:
+        food.goto(x, y)
+
+# check if head and border collide
+def check_collision_with_border():
+    if (head.xcor() < -190 or head.xcor() > 190) or (head.ycor() < -190 or head.ycor() > 190):
+        restart_game()
+
+# check if head and segment collide
+def check_collision_with_segment():
+    for segment in segments:
+        if segment.distance(head) < 20:
+            restart_game()
+
+# restart game: place head in center, set direction to "stop"
+def restart_game():
+        head.goto(0, 0)
+        head.direction = "stop"
+        print("Schade, verloren. :-/ Versuch's nochmal!")
+        remove_segments()
+
+# remove segments at restart
+def remove_segments():
+    for segment in segments:
+        segment.hideturtle()
+        del segment
+    segmente = []
+
+
+
+# create snake head
+head = Turtle()
+head.shape("square")
+head.color("black")
+head.penup()
+head.speed(0)
+head.goto(0, 20)
+head.direction = "stop"
+
+# create list for snake body segments
 segments = []
-"""
+
+# create food
+food = Turtle()
+food.shape("circle")
+food.color("red")
+food.penup()
+food.speed(0)
+place_food()
+
+# initialize control buttons
+down = Turtle()
+down.shape("triangle")
+down.color("green")
+down.right(90)
+down.speed(0)
+down.penup()
+down.goto(160, -180)
+
+right = Turtle()
+right.shape("triangle")
+right.color("green")
+right.speed(0)
+right.penup()
+right.goto(180, -160)
+
+left = Turtle()
+left.shape("triangle")
+left.color("green")
+left.right(180)
+left.speed(0)
+left.penup()
+left.goto(140, -160)
+
+up = Turtle()
+up.shape("triangle")
+up.color("green")
+up.right(-90)
+up.speed(0)
+up.penup()
+up.goto(160, -140)
+
+
+
+
 down.onclick(interpret_entry)
 right.onclick(interpret_entry)
 left.onclick(interpret_entry)
