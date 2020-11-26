@@ -23,6 +23,13 @@ def turn_to_top():
     if head.direction != "down":
         head.direction = "up"
 
+# define body movement
+def move_body():
+    for index in range(len(segments)-1, 0, -1):
+        # bewege segmente[index] an segmente[index - 1]
+        segments[index].goto(segments[index -1].pos())
+    if len(segments) > 0:
+        segments[0].goto(head.pos())
 
 
 # define head movement
@@ -40,6 +47,7 @@ def move_head():
         y = head.ycor()
         head.sety(y + 20)
 
+
 # define area of and reaction to onclick
 def interpret_entry(x, y):
     if (x >= 150 and x <= 170 and y >= -190 and y <= -170):
@@ -50,6 +58,7 @@ def interpret_entry(x, y):
         turn_to_left()
     elif (x >= 150 and x <= 170 and y >= -150 and y <= -130):
         turn_to_top()
+    move_body()
     move_head()
     check_collision_with_food()
     check_collision_with_border()
