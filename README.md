@@ -10,8 +10,7 @@ Define collision behaviour, create body segments and setup screen
 
 
 Stage 3:
-Define movement of body segments
-
+Define movement of body segments                                                     
 ![bodymovement](https://github.com/Ray-Subahri/pythonsnake/blob/main/documentation/gif%20stages/stage3_basics_set%20body%20movement.gif)
 
 Stage 4 (finished version 1.0):
