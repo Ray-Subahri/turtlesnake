@@ -1,4 +1,4 @@
-**The classic game 'Snake' written in python using the turtle library.**
+This is the classic game 'Snake' written in python using the turtle library.
 
 **Stage 1:**
 Create head, fruit and controls
