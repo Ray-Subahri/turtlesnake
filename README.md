@@ -15,4 +15,12 @@ Define movement of body segments
 
 **Stage 4 (finished version 1.0):**
 Set indefinite motion and fix minor bugs
-![stage4](https://github.com/Ray-Subahri/pythonsnake/blob/main/documentation/gif%20stages/stage4_finished_v1_set%20indefinite%20motion%20and%20fix%20bugs.gif)
+![finished_version1](https://github.com/Ray-Subahri/pythonsnake/blob/main/documentation/gif%20stages/stage4_finished_v1_set%20indefinite%20motion%20and%20fix%20bugs.gif)
+
+**Stage 5:**
+Import first graphic element                                                           
+![insert_first_graphic](https://github.com/Ray-Subahri/turtlesnake/blob/main/documentation/gif%20stages/stage5_design_import%20fruit%20and%20head%20graphics.gif)
+
+**Stage 6:**
+fix head direction and import body graphics                                                     
+![fix_head_and_import_body](https://github.com/Ray-Subahri/turtlesnake/blob/main/documentation/gif%20stages/stage6_design_fix%20head%20direction%2C%20import%20body%20graphics.gif)
