@@ -19,19 +19,18 @@ turtle.register_shape('body_left.gif')
 turtle.register_shape('body_down.gif')
 turtle.register_shape('body_right.gif')
 
+# corners
+turtle.register_shape('down_left.gif')
+turtle.register_shape('down_right.gif')
+turtle.register_shape('left_down.gif')
+turtle.register_shape('left_up.gif')
+turtle.register_shape('right_down.gif')
+turtle.register_shape('right_up.gif')
+turtle.register_shape('up_left.gif')
+turtle.register_shape('up_right.gif')
+
 
 ########################################## CONTROLS, TURTLE CONSTRUCTOR, SEGMENT CONSTRUCTOR ########################################################
-
-# define area of and reaction to onclick
-def interpret_entry(x, y):
-    if (x >= 150 and x <= 170 and y >= -150 and y <= -130):
-        turn_to_top()
-    elif (x >= 130 and x <= 150 and y >= -170 and y <= -150):
-        turn_to_left()
-    elif (x >= 150 and x <= 170 and y >= -190 and y <= -170):
-        turn_to_bottom()
-    elif (x >= 170 and x <= 190 and y >= -170 and y <= -150):
-        turn_to_right()
 
 # create buttons
 def create_turtle(x, y, rotation, shape="triangle", color="green"):
@@ -49,10 +48,20 @@ def create_turtle(x, y, rotation, shape="triangle", color="green"):
 def create_segment(shape):
     new_segment = turtle.Turtle()
     new_segment.shape(shape)
-    new_segment.color("yellow")
     new_segment.penup()
     new_segment.speed(0)
     segments.append(new_segment)
+
+# define area of and reaction to onclick
+def interpret_entry(x, y):
+    if (x >= 150 and x <= 170 and y >= -150 and y <= -130):
+        turn_to_top()
+    elif (x >= 130 and x <= 150 and y >= -170 and y <= -150):
+        turn_to_left()
+    elif (x >= 150 and x <= 170 and y >= -190 and y <= -170):
+        turn_to_bottom()
+    elif (x >= 170 and x <= 190 and y >= -170 and y <= -150):
+        turn_to_right()
 
 #define body-shape on creation
 def body_shape():
@@ -110,10 +119,29 @@ def move_body():
     for index in range(len(segments)-1, 0, -1):
         # bewege segmente[index] an segmente[index - 1]
         segments[index].goto(segments[index -1].pos())
+        segments[index].shape(segments[index -1].shape())
     # place last element on position of head 
     if len(segments) > 0:
         segments[0].goto(head.pos())
-
+        segments[0].shape(body_shape())
+    if len(segments) > 1:
+        if head.direction == "left" and segments[1].shape() == 'body_down.gif':
+            segments[0].shape('down_left.gif')
+        if head.direction == "right" and segments[1].shape() == 'body_down.gif':
+            segments[0].shape('down_right.gif')
+        if head.direction == "down" and segments[1].shape() == 'body_left.gif':
+            segments[0].shape('left_down.gif')
+        if head.direction == "up" and segments[1].shape() == 'body_left.gif':
+            segments[0].shape('left_up.gif')
+        if head.direction == "down" and segments[1].shape() == 'body_right.gif':
+            segments[0].shape('right_down.gif')
+        if head.direction == "up" and segments[1].shape() == 'body_right.gif':
+            segments[0].shape('right_up.gif')
+        if head.direction == "left" and segments[1].shape() == 'body_up.gif':
+            segments[0].shape('up_left.gif')
+        if head.direction == "right" and segments[1].shape() == 'body_up.gif':
+            segments[0].shape('up_right.gif')
+    
 
 ########################################## COLLISION BEHAVIOUR ########################################################
 
@@ -179,8 +207,8 @@ def repeat_game_logic():
         time.sleep(0.15)
 
 # create head and food
-head = create_turtle(0, 0, 0, "head_up.gif", "black")
-food = create_turtle(0, 100, 0, "fruit_red.gif", "red")
+head = create_turtle(0, 0, 0, "head_up.gif")
+food = create_turtle(0, 100, 0, "fruit_red.gif")
 
 # create game buttons
 up = create_turtle(160, -140, -90)
