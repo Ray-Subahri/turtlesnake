@@ -125,21 +125,21 @@ def move_body():
         segments[0].goto(head.pos())
         segments[0].shape(body_shape())
     if len(segments) > 1:
-        if head.direction == "left" and segments[1].shape() == 'body_down.gif':
+        if head.direction == "left" and (segments[1].shape() == 'body_down.gif' or  segments[1].shape() == 'right_down.gif' or segments[1].shape() == 'left_down.gif'):
             segments[0].shape('down_left.gif')
-        if head.direction == "right" and segments[1].shape() == 'body_down.gif':
+        if head.direction == "right" and (segments[1].shape() == 'body_down.gif' or segments[1].shape() == 'right_down.gif' or segments[1].shape() == 'left_down.gif'):
             segments[0].shape('down_right.gif')
-        if head.direction == "down" and segments[1].shape() == 'body_left.gif':
+        if head.direction == "down" and (segments[1].shape() == 'body_left.gif' or segments[1].shape() == 'up_left.gif' or segments[1].shape() == 'down_left.gif'):
             segments[0].shape('left_down.gif')
-        if head.direction == "up" and segments[1].shape() == 'body_left.gif':
+        if head.direction == "up" and (segments[1].shape() == 'body_left.gif' or segments[1].shape() == 'up_left.gif' or segments[1].shape() == 'down_left.gif'):
             segments[0].shape('left_up.gif')
-        if head.direction == "down" and segments[1].shape() == 'body_right.gif':
+        if head.direction == "down" and (segments[1].shape() == 'body_right.gif' or segments[1].shape() == 'down_right.gif' or segments[1].shape() == 'up_right.gif'):
             segments[0].shape('right_down.gif')
-        if head.direction == "up" and segments[1].shape() == 'body_right.gif':
+        if head.direction == "up" and (segments[1].shape() == 'body_right.gif' or segments[1].shape() == 'down_right.gif' or segments[1].shape() == 'up_right.gif'):
             segments[0].shape('right_up.gif')
-        if head.direction == "left" and segments[1].shape() == 'body_up.gif':
+        if head.direction == "left" and (segments[1].shape() == 'body_up.gif' or segments[1].shape() == 'right_up.gif' or segments[1].shape() == 'left_up.gif'):
             segments[0].shape('up_left.gif')
-        if head.direction == "right" and segments[1].shape() == 'body_up.gif':
+        if head.direction == "right" and (segments[1].shape() == 'body_up.gif' or segments[1].shape() == 'right_up.gif' or segments[1].shape() == 'left_up.gif'):
             segments[0].shape('up_right.gif')
     
 
