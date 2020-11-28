@@ -140,8 +140,10 @@ def repeat_game_logic():
         time.sleep(0.15)
 
 # create head and food
-head = create_turtle(0, 0, 0, "square", "black")
-food = create_turtle(0, 100, 0, "circle", "red")
+turtle.register_shape('fruit_red.gif') 
+turtle.register_shape('head_up.gif')
+head = create_turtle(0, 0, 0, "head_up.gif", "black")
+food = create_turtle(0, 100, 0, "fruit_red.gif", "red")
 
 # create game buttons
 up = create_turtle(160, -140, -90)
