@@ -24,3 +24,7 @@ Import first graphic element
 **Stage 6:**
 fix head direction and import body graphics                                                     
 ![fix_head_and_import_body](https://github.com/Ray-Subahri/turtlesnake/blob/main/documentation/gif%20stages/stage6_design_fix%20head%20direction%2C%20import%20body%20graphics.gif)
+
+**Stage 7:**
+fix body direction and import corner graphics                                      
+![fix_body_and_import_corners](https://github.com/Ray-Subahri/turtlesnake/blob/main/documentation/gif%20stages/stage7_design_fix%20body%20direction%2C%20import%20corner%20graphics.gif)
