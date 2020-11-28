@@ -29,6 +29,6 @@ Fix head direction and import body graphics
 Fix body direction and import corner graphics                                      
 ![fix_body_and_import_corners](https://github.com/Ray-Subahri/turtlesnake/blob/main/documentation/gif%20stages/stage7_design_fix%20body%20direction%2C%20import%20corner%20graphics.gif)
 
-**Stage 8(finished version 1.1.0:**
+**Stage 8(finished version 1.1.0):**
 Fix Corners                                                                                 
 ![finished_version1-1](https://github.com/Ray-Subahri/turtlesnake/blob/main/documentation/gif%20stages/stage8_finished_v1-1_fix%20corners.gif)
