@@ -2,7 +2,36 @@ import turtle
 import random
 import time
 
-########################################## CONTROLS ########################################################
+########################################## SHAPE REGISTRATION ########################################################
+
+# fruit
+turtle.register_shape('fruit_red.gif') 
+
+# head
+turtle.register_shape('head_up.gif')
+turtle.register_shape('head_left.gif')
+turtle.register_shape('head_down.gif')
+turtle.register_shape('head_right.gif')
+
+# body
+turtle.register_shape('body_up.gif')
+turtle.register_shape('body_left.gif')
+turtle.register_shape('body_down.gif')
+turtle.register_shape('body_right.gif')
+
+
+########################################## CONTROLS, TURTLE CONSTRUCTOR, SEGMENT CONSTRUCTOR ########################################################
+
+# define area of and reaction to onclick
+def interpret_entry(x, y):
+    if (x >= 150 and x <= 170 and y >= -150 and y <= -130):
+        turn_to_top()
+    elif (x >= 130 and x <= 150 and y >= -170 and y <= -150):
+        turn_to_left()
+    elif (x >= 150 and x <= 170 and y >= -190 and y <= -170):
+        turn_to_bottom()
+    elif (x >= 170 and x <= 190 and y >= -170 and y <= -150):
+        turn_to_right()
 
 # create buttons
 def create_turtle(x, y, rotation, shape="triangle", color="green"):
@@ -16,16 +45,25 @@ def create_turtle(x, y, rotation, shape="triangle", color="green"):
     element.direction = "stop"
     return element
 
-# define area of and reaction to onclick
-def interpret_entry(x, y):
-    if (x >= 150 and x <= 170 and y >= -150 and y <= -130):
-        turn_to_top()
-    elif (x >= 130 and x <= 150 and y >= -170 and y <= -150):
-        turn_to_left()
-    elif (x >= 150 and x <= 170 and y >= -190 and y <= -170):
-        turn_to_bottom()
-    elif (x >= 170 and x <= 190 and y >= -170 and y <= -150):
-        turn_to_right()
+#create body segments
+def create_segment(shape):
+    new_segment = turtle.Turtle()
+    new_segment.shape(shape)
+    new_segment.color("yellow")
+    new_segment.penup()
+    new_segment.speed(0)
+    segments.append(new_segment)
+
+#define body-shape on creation
+def body_shape():
+    if head.direction == "up":
+        return "body_up.gif"
+    if head.direction == "left":
+        return "body_left.gif"
+    if head.direction == "down":
+        return "body_down.gif"
+    if head.direction == "right":
+        return "body_right.gif" 
 
 
 ########################################## MOVEMENT ########################################################
@@ -34,18 +72,22 @@ def interpret_entry(x, y):
 def turn_to_top():
     if head.direction != "down":
         head.direction = "up"
+        head.shape('head_up.gif')
 
 def turn_to_left():
     if head.direction != "right":
         head.direction = "left"
+        head.shape('head_left.gif')
 
 def turn_to_bottom():
     if head.direction != "up":
         head.direction = "down"
+        head.shape('head_down.gif')
 
 def turn_to_right():
     if head.direction != "left":
         head.direction = "right"
+        head.shape('head_right.gif')
 
 # define head movement
 def move_head():
@@ -101,12 +143,8 @@ def place_food():
 def check_collision_with_food():
     if head.distance(food) < 20:
         place_food()
-        new_segment = turtle.Turtle()
-        new_segment.shape("square")
-        new_segment.color("yellow")
-        new_segment.penup()
-        new_segment.speed(0)
-        segments.append(new_segment)
+        create_segment(body_shape())
+        
 
 ########################################## RESTART BEHAVIOUR ########################################################
 
@@ -122,6 +160,7 @@ def remove_segments():
 def restart_game():
         head.goto(0, 0)
         head.direction = "stop"
+        head.shape('head_up.gif')
         print("Schade, verloren. :-/ Versuch's nochmal!")
         remove_segments()
 
@@ -140,8 +179,6 @@ def repeat_game_logic():
         time.sleep(0.15)
 
 # create head and food
-turtle.register_shape('fruit_red.gif') 
-turtle.register_shape('head_up.gif')
 head = create_turtle(0, 0, 0, "head_up.gif", "black")
 food = create_turtle(0, 100, 0, "fruit_red.gif", "red")
 
